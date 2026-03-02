@@ -1,0 +1,36 @@
+# ============================================================
+#  CasaBela — .htaccess (Apache / IONOS)
+# ============================================================
+
+Options -Indexes
+
+# Redireciona HTTP → HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Protege pasta de dados
+<FilesMatch "\.json$">
+  Order deny,allow
+  Deny from all
+</FilesMatch>
+
+# Permite acesso directo a ficheiros e pastas existentes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Cabeçalhos de segurança
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# Cache de imagens e CSS/JS
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg  "access plus 30 days"
+  ExpiresByType image/png   "access plus 30 days"
+  ExpiresByType image/webp  "access plus 30 days"
+  ExpiresByType text/css    "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+</IfModule>

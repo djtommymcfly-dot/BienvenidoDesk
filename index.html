@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Bienvenido Desk — Casas para Férias</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="config.js"></script>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══════════════════════════════════════════════ -->
+<header class="site-header" id="header">
+  <div class="container nav-bar">
+    <a href="index.html" class="logo">
+      <span class="logo-main">Bienvenido Desk</span>
+      <span class="logo-sub">Casas para Férias</span>
+    </a>
+    <nav>
+      <a href="#imoveis">Imóveis</a>
+      <a href="#localizacao">Localização</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#" id="nav-whatsapp" class="nav-wa" target="_blank">💬 WhatsApp</a>
+  </div>
+</header>
+
+<!-- ═══ HERO ═════════════════════════════════════════════════ -->
+<section class="hero">
+  <img src="Fotos/1.jpg" alt="Bienvenido Desk" class="hero-bg"/>
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <div class="hero-badge" id="hero-badge">
+      Ayamonte · Huelva · Espanha
+    </div>
+    <h1 id="hero-h1">
+      Casa<em>Bela</em>
+    </h1>
+    <p class="hero-sub" id="hero-sub">Villas de luxo para férias inesquecíveis na fronteira ibérica. Sol, piscina e tranquilidade.</p>
+    <div class="hero-ctas">
+      <a href="#imoveis" class="btn">Ver Imóveis</a>
+      <a href="#contacto" class="btn btn-ghost">Contactar</a>
+    </div>
+  </div>
+  <div class="hero-stats" id="hero-stats">
+    <div class="hero-stat">
+      <span>3+</span><span>Anos de Excelência</span>
+    </div>
+    <div class="hero-stat">
+      <span>100%</span><span>Satisfação</span>
+    </div>
+    <div class="hero-stat">
+      <span>10<small style="font-size:1.4rem">min</small></span><span>Da Praia</span>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ═══ IMÓVEIS ═══════════════════════════════════════════════ -->
+<section id="imoveis" class="section cards-section">
+  <div class="container">
+    <div class="reveal">
+      <p class="eyebrow">Os Nossos Imóveis</p>
+      <h2 class="section-title">Escolha o seu<br/><em>refúgio perfeito</em></h2>
+    </div>
+    <div class="cards-grid" id="cards-grid">
+      <!-- gerado pelo JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LOCALIZAÇÃO ═══════════════════════════════════════════ -->
+<section id="localizacao" class="section loc-section">
+  <div class="container">
+    <div class="reveal">
+      <p class="eyebrow">Localização</p>
+      <h2 class="section-title">No coração de<br/><em>Ayamonte</em></h2>
+      <p class="section-sub">Na fronteira entre Espanha e Portugal, a poucos minutos do mar e a 45 min do Aeroporto de Faro.</p>
+    </div>
+    <div class="loc-grid">
+      <div class="mapa-wrapper reveal reveal-d1">
+        <iframe id="mapa-iframe"
+          src="https://maps.google.com/maps?q=37.2143,-7.4058&z=14&output=embed"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="distancias reveal reveal-d2">
+        <div class="dist-item">
+          <span class="dist-icon">🏖️</span>
+          <div class="dist-info"><strong>10 min</strong><span>Da praia</span></div>
+        </div>
+        <div class="dist-item">
+          <span class="dist-icon">🛒</span>
+          <div class="dist-info"><strong>5 min</strong><span>Supermercado</span></div>
+        </div>
+        <div class="dist-item">
+          <span class="dist-icon">🇵🇹</span>
+          <div class="dist-info"><strong>2 min</strong><span>Fronteira Portugal</span></div>
+        </div>
+        <div class="dist-item">
+          <span class="dist-icon">✈️</span>
+          <div class="dist-info"><strong>45 min</strong><span>Aeroporto de Faro</span></div>
+        </div>
+        <div class="dist-item">
+          <span class="dist-icon">🍽️</span>
+          <div class="dist-info"><strong>2 min</strong><span>Restaurantes e bares</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACTO ══════════════════════════════════════════════ -->
+<section id="contacto" class="section contacto-section">
+  <div class="container">
+    <div class="reveal">
+      <p class="eyebrow">Fale Connosco</p>
+      <h2 class="section-title">Planeie as suas<br/><em>férias de sonho</em></h2>
+    </div>
+    <div class="contacto-grid">
+      <div class="contacto-info-list reveal reveal-d1">
+        <div class="contacto-item">
+          <span class="ci-icon">✉️</span>
+          <div>
+            <strong>Email</strong>
+            <span id="ci-email">info@casabela.es</span>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <span class="ci-icon">📞</span>
+          <div>
+            <strong>Telefone</strong>
+            <span id="ci-tel">+34 600 000 000</span>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <span class="ci-icon">📍</span>
+          <div>
+            <strong>Localização</strong>
+            <span>Ayamonte, Huelva, Espanha</span>
+          </div>
+        </div>
+        <a href="#" id="ci-wa" class="btn btn-wa" target="_blank" style="justify-content:center">
+          💬 Enviar WhatsApp
+        </a>
+      </div>
+
+      <div class="form-card reveal reveal-d2">
+        <h3>Envie uma mensagem</h3>
+        <form class="contacto-form" id="contacto-form">
+          <div class="form-row">
+            <div>
+              <label class="form-label">Nome *</label>
+              <input type="text" name="nome" placeholder="João Silva" required/>
+            </div>
+            <div>
+              <label class="form-label">Email *</label>
+              <input type="email" name="email" placeholder="joao@email.com" required/>
+            </div>
+          </div>
+          <div>
+            <label class="form-label">Telefone</label>
+            <input type="tel" name="telefone" placeholder="+351 912 345 678"/>
+          </div>
+          <div>
+            <label class="form-label">Mensagem *</label>
+            <textarea name="mensagem" rows="4" placeholder="Como podemos ajudar?" required></textarea>
+          </div>
+          <button type="submit" class="btn">Enviar Mensagem ↗</button>
+          <p class="form-status" id="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© 2026 Bienvenido Desk — Todos os direitos reservados</p>
+    <a href="admin/index.php" class="admin-link">⚙ Admin</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const cfg = CASABELA_CONFIG;
+  const s   = cfg.site;
+
+  // ── Preenche dados do config ─────────────────────────────────
+  document.title = `${s.nome} — ${s.slogan}`;
+  document.getElementById('ci-email').textContent = s.email;
+  document.getElementById('ci-tel').textContent   = s.telefone;
+  const waUrl = `https://wa.me/${s.whatsapp}`;
+  document.getElementById('nav-whatsapp').href = waUrl;
+  document.getElementById('ci-wa').href         = waUrl;
+
+  // Mapa
+  const m = cfg.imoveis[0]?.mapa;
+  if (m) document.getElementById('mapa-iframe').src =
+    `https://maps.google.com/maps?q=${m.lat},${m.lng}&z=${m.zoom}&output=embed`;
+
+  // ── Cards ─────────────────────────────────────────────────────
+  const grid = document.getElementById('cards-grid');
+  cfg.imoveis.filter(i=>i.ativo).forEach((im,idx)=>{
+    const pr = im.precos.temporada_baixa;
+    const card = document.createElement('article');
+    card.className = `card reveal reveal-d${(idx%3)+1}`;
+    card.innerHTML = `
+      <div class="card-img-wrap">
+        <img src="${im.fotos[0].src}" alt="${im.nome}" loading="lazy"/>
+        <div class="card-img-overlay"></div>
+        <div class="card-img-meta">
+          <span class="card-badge">👥 ${im.pessoas_max} pessoas</span>
+          <div class="card-preco-hero">${s.moeda}${pr}<small>/noite</small></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3>${im.nome}</h3>
+        <p class="card-loc">📍 ${im.localizacao}</p>
+        <div class="card-feats">
+          <span class="card-feat">🛏 ${im.quartos} quartos</span>
+          <span class="card-feat">🚿 ${im.casas_banho} WC</span>
+          <span class="card-feat">📐 ${im.area_m2} m²</span>
+        </div>
+        <div class="card-cta">
+          <a href="imovel.html?id=${im.id}" class="card-cta-link">
+            Ver imóvel &amp; reservar <span class="card-cta-arrow">→</span>
+          </a>
+          <a href="imovel.html?id=${im.id}" class="btn btn-sm">Reservar</a>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // ── Scroll reveal ────────────────────────────────────────────
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold:.1 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ── Header scroll ────────────────────────────────────────────
+  window.addEventListener('scroll',()=>{
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── Formulário contacto ───────────────────────────────────────
+  document.getElementById('contacto-form').addEventListener('submit', async e=>{
+    e.preventDefault();
+    const st = document.getElementById('form-status');
+    st.textContent = 'A enviar...';
+    try {
+      const r = await fetch('api/contacto.php',{method:'POST',body:new FormData(e.target)});
+      const j = await r.json();
+      st.textContent = j.ok ? '✅ Mensagem enviada!' : '❌ '+j.erro;
+      if(j.ok) e.target.reset();
+    } catch { st.textContent = '✅ Mensagem recebida! Entraremos em contacto.'; e.target.reset(); }
+  });
+})();
+</script>
+</body>
+</html>

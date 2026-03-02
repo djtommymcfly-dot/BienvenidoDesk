@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Imóvel — CasaBela</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="config.js"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header scrolled" id="header">
+  <div class="container nav-bar">
+    <a href="index.html" class="logo">
+      <span class="logo-main">CasaBela</span>
+      <span class="logo-sub">Luxo para Férias</span>
+    </a>
+    <nav>
+      <a href="index.html#imoveis">← Imóveis</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a href="#" id="nav-wa" class="nav-wa" target="_blank">💬 WhatsApp</a>
+  </div>
+</header>
+
+<!-- GALERIA -->
+<div style="padding-top:65px">
+  <section class="galeria-hero">
+    <div class="galeria-main" id="galeria-main">
+      <img id="foto-principal" src="" alt=""/>
+      <button class="gal-nav gal-prev" id="gal-prev">←</button>
+      <button class="gal-nav gal-next" id="gal-next">→</button>
+      <span class="gal-counter" id="gal-counter">1 / 8</span>
+    </div>
+    <div class="galeria-thumbs" id="galeria-thumbs"></div>
+  </section>
+</div>
+
+<!-- LAYOUT -->
+<div class="imovel-layout container">
+
+  <!-- Coluna principal -->
+  <div class="imovel-main">
+
+    <div class="imovel-header reveal">
+      <div class="eyebrow" id="im-eyebrow">Villa de Luxo</div>
+      <h1 id="im-nome"></h1>
+      <p class="im-loc" id="im-loc"></p>
+    </div>
+
+    <div class="im-feats reveal reveal-d1" id="im-feats"></div>
+
+    <div class="im-preco-box reveal reveal-d2" id="im-preco-box"></div>
+
+    <p class="im-desc reveal" id="im-desc"></p>
+
+    <h3 class="section-h3 reveal">Comodidades</h3>
+    <ul class="im-comodidades reveal reveal-d1" id="im-comodidades"></ul>
+
+    <!-- CALENDÁRIO -->
+    <h3 class="section-h3 reveal">Disponibilidade</h3>
+    <div class="calendario-wrap reveal">
+      <div class="cal-nav">
+        <button id="cal-prev-m">←</button>
+        <span id="cal-mes-label"></span>
+        <button id="cal-next-m">→</button>
+      </div>
+      <div class="cal-grid-header">
+        <span>Dom</span><span>Seg</span><span>Ter</span>
+        <span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <div class="cal-legend">
+        <span><span class="leg-dot leg-livre"></span> Disponível</span>
+        <span><span class="leg-dot leg-ocupado"></span> Ocupado</span>
+        <span><span class="leg-dot leg-sel"></span> Selecionado</span>
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO RESERVA -->
+    <div class="reserva-form-wrap" id="reserva-form-wrap" style="display:none">
+      <h3>Pedido de Reserva</h3>
+      <form id="reserva-form">
+        <input type="hidden" name="imovel_id" id="rf-id"/>
+        <div class="rf-row">
+          <div>
+            <label class="form-label">Entrada</label>
+            <input type="text" name="entrada" id="rf-entrada" readonly/>
+          </div>
+          <div>
+            <label class="form-label">Saída</label>
+            <input type="text" name="saida" id="rf-saida" readonly/>
+          </div>
+          <div>
+            <label class="form-label">Noites</label>
+            <input type="text" name="noites" id="rf-noites" readonly/>
+          </div>
+        </div>
+        <div class="rf-row">
+          <div>
+            <label class="form-label">Nome completo *</label>
+            <input type="text" name="nome" placeholder="João Silva" required/>
+          </div>
+          <div>
+            <label class="form-label">Email *</label>
+            <input type="email" name="email" placeholder="joao@email.com" required/>
+          </div>
+        </div>
+        <div class="rf-row">
+          <div>
+            <label class="form-label">Telefone *</label>
+            <input type="tel" name="telefone" placeholder="+351 912 345 678" required/>
+          </div>
+          <div>
+            <label class="form-label">Nº pessoas</label>
+            <input type="number" name="pessoas" min="1" max="12" value="2"/>
+          </div>
+        </div>
+        <label class="form-label">Pedidos especiais</label>
+        <textarea name="mensagem" rows="3" placeholder="Algum pedido especial?"></textarea>
+        <div class="rf-total" id="rf-total"></div>
+        <button type="submit" class="btn btn-gold btn-reserva">Enviar Pedido de Reserva ↗</button>
+        <p class="form-status" id="rf-status"></p>
+        <p class="rf-disclaimer" style="margin-top:.8rem">Pedido sujeito a confirmação. Receberá email com detalhes de pagamento.</p>
+      </form>
+    </div>
+
+  </div><!-- /main -->
+
+  <!-- ASIDE -->
+  <aside class="imovel-aside">
+    <div class="aside-card">
+      <div class="aside-preco">
+        <span class="aside-preco-from">A partir de</span>
+        <div class="aside-preco-num" id="aside-num">—</div>
+        <span class="aside-preco-unit">€ / noite</span>
+      </div>
+      <div class="aside-feats" id="aside-feats"></div>
+      <div class="aside-cta">
+        <a href="#" id="aside-wa" class="btn btn-wa" target="_blank">💬 WhatsApp</a>
+        <a href="index.html#contacto" class="btn btn-ghost">✉️ Email</a>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lb-close">✕</button>
+  <button class="lb-nav lb-prev" id="lb-prev">←</button>
+  <img id="lb-img" src="" alt=""/>
+  <p id="lb-leg"></p>
+  <button class="lb-nav lb-next" id="lb-next">→</button>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© 2025 CasaBela — Todos os direitos reservados</p>
+    <a href="admin/index.php" class="admin-link">⚙ Admin</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const id  = parseInt(params.get('id')) || 1;
+  const cfg = CASABELA_CONFIG;
+  const s   = cfg.site;
+  const im  = cfg.imoveis.find(x=>x.id===id);
+  if (!im){ document.body.innerHTML='<p style="padding:4rem;text-align:center;color:#fff">Imóvel não encontrado.</p>'; return; }
+
+  document.title = `${im.nome} — ${s.nome}`;
+
+  const waMsg = `https://wa.me/${s.whatsapp}?text=${encodeURIComponent('Olá! Tenho interesse em '+im.nome)}`;
+  document.getElementById('nav-wa').href   = waMsg;
+  document.getElementById('aside-wa').href = waMsg;
+
+  // ── GALERIA ──────────────────────────────────────────────────
+  let fi=0;
+  const fotos=im.fotos;
+  const fp=document.getElementById('foto-principal');
+  const gc=document.getElementById('gal-counter');
+  const tw=document.getElementById('galeria-thumbs');
+
+  function setFoto(i){
+    fi=(i+fotos.length)%fotos.length;
+    fp.src=fotos[fi].src; fp.alt=fotos[fi].legenda;
+    gc.textContent=`${fi+1} / ${fotos.length}`;
+    document.querySelectorAll('.thumb').forEach((t,ti)=>t.classList.toggle('thumb-active',ti===fi));
+  }
+  fotos.forEach((f,i)=>{
+    const t=document.createElement('img');
+    t.src=f.src; t.alt=f.legenda; t.className='thumb';
+    t.addEventListener('click',()=>setFoto(i)); tw.appendChild(t);
+  });
+  document.getElementById('gal-prev').addEventListener('click',()=>setFoto(fi-1));
+  document.getElementById('gal-next').addEventListener('click',()=>setFoto(fi+1));
+  fp.addEventListener('click',()=>openLB(fi));
+  setFoto(0);
+
+  // Touch swipe galeria
+  let tx=0;
+  fp.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+  fp.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-tx;
+    if(Math.abs(dx)>40) dx<0?setFoto(fi+1):setFoto(fi-1);
+  });
+
+  // ── LIGHTBOX ─────────────────────────────────────────────────
+  let li=0;
+  const lb=document.getElementById('lightbox');
+  function openLB(i){ li=(i+fotos.length)%fotos.length; document.getElementById('lb-img').src=fotos[li].src; document.getElementById('lb-leg').textContent=fotos[li].legenda; lb.classList.add('lb-open'); }
+  document.getElementById('lb-close').addEventListener('click',()=>lb.classList.remove('lb-open'));
+  document.getElementById('lb-prev').addEventListener('click',()=>openLB(li-1));
+  document.getElementById('lb-next').addEventListener('click',()=>openLB(li+1));
+  lb.addEventListener('click',e=>{ if(e.target===lb) lb.classList.remove('lb-open'); });
+  document.addEventListener('keydown',e=>{ if(!lb.classList.contains('lb-open')) return; if(e.key==='ArrowLeft') openLB(li-1); if(e.key==='ArrowRight') openLB(li+1); if(e.key==='Escape') lb.classList.remove('lb-open'); });
+
+  // ── PREENCHE INFO ─────────────────────────────────────────────
+  document.getElementById('im-nome').textContent = im.nome;
+  document.getElementById('im-loc').textContent  = '📍 '+im.localizacao;
+  document.getElementById('im-desc').innerHTML   = im.descricao.replace(/\n+/g,'<br/>');
+  document.getElementById('rf-id').value         = im.id;
+  document.getElementById('aside-num').textContent= im.precos.temporada_baixa;
+
+  const pr=im.precos;
+  document.getElementById('im-feats').innerHTML =
+    `<span class="im-feat">🛏 ${im.quartos} Quartos</span>
+     <span class="im-feat">🚿 ${im.casas_banho} WC</span>
+     <span class="im-feat">👥 ${im.pessoas_max} Pessoas</span>
+     <span class="im-feat">📐 ${im.area_m2} m²</span>`;
+
+  document.getElementById('aside-feats').innerHTML =
+    `<div class="aside-feat"><span>Quartos</span><span>${im.quartos}</span></div>
+     <div class="aside-feat"><span>Casas de banho</span><span>${im.casas_banho}</span></div>
+     <div class="aside-feat"><span>Capacidade</span><span>${im.pessoas_max} pessoas</span></div>
+     <div class="aside-feat"><span>Área</span><span>${im.area_m2} m²</span></div>
+     <div class="aside-feat"><span>Época baixa</span><span>${s.moeda}${pr.temporada_baixa}/noite</span></div>
+     <div class="aside-feat"><span>Época alta</span><span style="color:var(--gold)">${s.moeda}${pr.temporada_alta}/noite</span></div>`;
+
+  document.getElementById('im-preco-box').innerHTML =
+    `<div class="preco-row"><span>Época Baixa (Out–Mar)</span><strong>${s.moeda}${pr.temporada_baixa}/noite</strong></div>
+     <div class="preco-row"><span>Época Média (Abr–Jun, Set)</span><strong>${s.moeda}${pr.temporada_media}/noite</strong></div>
+     <div class="preco-row preco-alta"><span>Época Alta (Jul–Ago)</span><strong>${s.moeda}${pr.temporada_alta}/noite</strong></div>
+     <p class="preco-nota">* Mínimo ${pr.semana_minima} noites em época alta</p>`;
+
+  const ul=document.getElementById('im-comodidades');
+  im.comodidades.forEach(c=>{ const li=document.createElement('li'); li.textContent=c; ul.appendChild(li); });
+
+  // ── CALENDÁRIO ───────────────────────────────────────────────
+  const bloqueadas=new Set(cfg.datas_bloqueadas[id]||[]);
+  let calAno=new Date().getFullYear(), calMes=new Date().getMonth();
+  let selI=null, selF=null;
+  const meses=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  const ds=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  const pd=s=>{const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);};
+  const fd=s=>{ if(!s) return ''; const d=pd(s); return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`; };
+  function pn(d){ const m=d.getMonth(); if(m===6||m===7) return pr.temporada_alta; if(m===3||m===4||m===5||m===8) return pr.temporada_media; return pr.temporada_baixa; }
+  function total(i,f){ let t=0,c=new Date(pd(i)),e=pd(f); while(c<e){t+=pn(c);c.setDate(c.getDate()+1);} return t; }
+
+  function renderCal(){
+    document.getElementById('cal-mes-label').textContent=`${meses[calMes]} ${calAno}`;
+    const g=document.getElementById('cal-grid'); g.innerHTML='';
+    const pD=new Date(calAno,calMes,1).getDay();
+    const dM=new Date(calAno,calMes+1,0).getDate();
+    const hoje=ds(new Date());
+    for(let i=0;i<pD;i++){const v=document.createElement('div');v.className='cal-day cal-empty';g.appendChild(v);}
+    for(let d=1;d<=dM;d++){
+      const str=ds(new Date(calAno,calMes,d));
+      const div=document.createElement('div'); div.textContent=d; div.className='cal-day';
+      if(bloqueadas.has(str)||str<hoje){
+        div.classList.add('cal-ocupado');
+      } else {
+        div.classList.add('cal-livre');
+        if(selI&&selF&&str>=selI&&str<=selF) div.classList.add('cal-range');
+        if(str===selI) div.classList.add('cal-sel-inicio');
+        if(str===selF) div.classList.add('cal-sel-fim');
+        div.addEventListener('click',()=>clickDia(str));
+      }
+      g.appendChild(div);
+    }
+  }
+
+  function clickDia(str){
+    if(!selI||(selI&&selF)){ selI=str; selF=null; }
+    else if(str<=selI){ selI=str; selF=null; }
+    else {
+      let c=new Date(pd(selI)),e=pd(str),bloq=false;
+      while(c<=e){ if(bloqueadas.has(ds(c))){bloq=true;break;} c.setDate(c.getDate()+1); }
+      if(bloq){ alert('Existem datas ocupadas no intervalo. Escolha outro período.'); selI=null; selF=null; }
+      else { selF=str; }
+    }
+    renderCal(); atualizaForm();
+  }
+
+  function atualizaForm(){
+    const w=document.getElementById('reserva-form-wrap');
+    if(selI&&selF){
+      const n=Math.round((pd(selF)-pd(selI))/86400000);
+      document.getElementById('rf-entrada').value=fd(selI);
+      document.getElementById('rf-saida').value=fd(selF);
+      document.getElementById('rf-noites').value=`${n} noites`;
+      document.getElementById('rf-total').innerHTML=`Total estimado: <strong>${s.moeda}${total(selI,selF)}</strong> (${n} noites)`;
+      w.style.display='block';
+      setTimeout(()=>w.scrollIntoView({behavior:'smooth',block:'start'}),100);
+    } else { w.style.display='none'; }
+  }
+
+  document.getElementById('cal-prev-m').addEventListener('click',()=>{ calMes--; if(calMes<0){calMes=11;calAno--;} renderCal(); });
+  document.getElementById('cal-next-m').addEventListener('click',()=>{ calMes++; if(calMes>11){calMes=0;calAno++;} renderCal(); });
+  renderCal();
+
+  // Carrega reservas existentes
+  fetch(`api/reservas.php?imovel_id=${id}&action=datas`)
+    .then(r=>r.json()).then(data=>{ if(data.datas){data.datas.forEach(d=>bloqueadas.add(d));renderCal();} }).catch(()=>{});
+
+  // ── FORMULÁRIO RESERVA ─────────────────────────────────────────
+  document.getElementById('reserva-form').addEventListener('submit',async e=>{
+    e.preventDefault();
+    const st=document.getElementById('rf-status');
+    st.textContent='A enviar...';
+    const fd2=new FormData(e.target);
+    fd2.append('entrada_raw',selI); fd2.append('saida_raw',selF);
+    try {
+      const r=await fetch('api/reservas.php',{method:'POST',body:fd2});
+      const j=await r.json();
+      if(j.ok){
+        st.innerHTML='✅ Pedido enviado! Receberá email de confirmação.';
+        e.target.reset(); selI=null; selF=null; renderCal();
+        document.getElementById('reserva-form-wrap').style.display='none';
+        fetch(`api/reservas.php?imovel_id=${id}&action=datas`).then(r=>r.json()).then(data=>{ if(data.datas){data.datas.forEach(d=>bloqueadas.add(d));renderCal();} }).catch(()=>{});
+      } else { st.textContent='❌ '+( j.erro||'Tente novamente.'); }
+    } catch { st.innerHTML='✅ Pedido recebido! Entraremos em contacto.'; }
+  });
+
+  // ── Scroll reveal ────────────────────────────────────────────
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ── Header scroll ────────────────────────────────────────────
+  window.addEventListener('scroll',()=>{
+    document.getElementById('header').classList.toggle('scrolled',window.scrollY>20);
+  });
+})();
+</script>
+</body>
+</html>
